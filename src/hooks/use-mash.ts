@@ -18,7 +18,7 @@ export default function useMash(earnerID: string) {
         mash.init().then(() => {
             setIsInitializing(false)
         })
-    }, [])
+    }, [earnerID])
 
     // Wrap the Mash SDK's access function to track loading state
     const access = async (pricingCategoryTag: string) => {

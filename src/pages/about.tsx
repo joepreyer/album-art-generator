@@ -17,7 +17,7 @@ export default function About() {
                 </Typography>
 
                 <Typography sx={{ mb: '16px' }}>
-                    If you have any questions or feedback, please don't hesitate to reach out to us at
+                    If you have any questions or feedback, please don&apos;t hesitate to reach out to us at
                     contact@ourwebsite.com.
                 </Typography>
                 <Typography sx={{ mb: '16px' }}>Thank you for using our tool!</Typography>
