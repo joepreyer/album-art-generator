@@ -6,17 +6,21 @@ import Navbar from '@/components/organisms/navbar'
 import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material/styles'
 import { useState } from 'react'
 
-const lightTheme = createTheme({
-    palette: {
-        mode: 'light',
-    },
-})
+const lightTheme = responsiveFontSizes(
+    createTheme({
+        palette: {
+            mode: 'light',
+        },
+    })
+)
 
-const darkTheme = createTheme({
-    palette: {
-        mode: 'dark',
-    },
-})
+const darkTheme = responsiveFontSizes(
+    createTheme({
+        palette: {
+            mode: 'dark',
+        },
+    })
+)
 
 export default function App({ Component, pageProps }: AppProps) {
     const [isDarkMode, setIsDarkMode] = useState(true)

@@ -1,33 +1,33 @@
-import { useState } from "react";
+import { Code } from '@mui/icons-material'
+import { useState } from 'react'
 
 export default function useVideoGenerator() {
-    const [isLoading, setIsLoading] = useState(false);
-    const [image, setImage] = useState(null);
+    const [isLoading, setIsLoading] = useState(false)
+    const [image, setImage] = useState(null)
 
-    const generateImage = async (lyrics, stylePrompt) => {
+    const generateImage = async (lyrics: string, stylePrompt?: string) => {
         setIsLoading(true)
-        try {
-            const response = await fetch("/api/openapi/generate-image", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    lyrics: lyrics,
-                    stylePrompt: stylePrompt,
-                }),
-            });
-            let data = await response.json();
-            if (response.status !== 200) {
-                console.error("API Error: ", data.detail);
-                alert("API Error: " + data.detail) //TODO replace with toast using mui
-                return;
-            }
-            setImage(data.imageURL);
+        const response = await fetch('/api/openapi/generate-image', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                lyrics: lyrics,
+                stylePrompt: stylePrompt,
+            }),
+        })
+        if (!response.ok) {
+            const errorResponse = await response.json()
+            const errorMessage =
+                errorResponse.error.message || 'Unknown error occurred while generating image - please try again.'
+            console.error('Error generating image', errorMessage)
             setIsLoading(false)
-        } catch (error) {
-            console.error("API error: ", error)
+            throw new Error(errorMessage)
         }
+        let data = await response.json()
+        setImage(data.imageURL)
+        setIsLoading(false)
     }
 
     return { isLoading, image, generateImage }

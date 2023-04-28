@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import useImageGenerator from '@/hooks/use-image-generator'
 import useMash from '@/hooks/use-mash'
-import ArtForm from '@/components/templates/art-generator'
+import ArtGenerator from '@/components/templates/art-generator'
 
 export default function Home() {
     const [error, setError] = useState<string | null>(null)
@@ -10,7 +10,6 @@ export default function Home() {
 
     useEffect(() => {}, [])
 
-    //Clear error message when lyrics or style prompt changes
     useEffect(() => {
         setError(null)
     }, [lyrics, stylePrompt])
@@ -18,20 +17,24 @@ export default function Home() {
     const devMode = process.env.NODE_ENV === 'development'
     const PRICE_CATEGORY_TAG = process.env.NEXT_PUBLIC_MASH_PRICE_CATEGORY_TAG as string
     const mash = useMash(process.env.NEXT_PUBLIC_MASH_EARNER_ID as string)
+    const imageGenerator = useImageGenerator()
 
-    const { isLoading, image, generateImage } = useImageGenerator()
-
-    //Submit lyrics to generate image
     const generateArt = async () => {
         if (!lyrics) return setError('Please enter some lyrics')
-        const hasAccess = devMode || (await mash.access(PRICE_CATEGORY_TAG))
-        if (hasAccess) {
-            generateImage(lyrics, stylePrompt)
-        } else console.log("You don't have access to this feature yet")
+        try {
+            const hasAccess = devMode || (await mash.access(PRICE_CATEGORY_TAG))
+            if (hasAccess) {
+                await imageGenerator.generateImage(lyrics, stylePrompt)
+                console.log('GENERATED IMAGE')
+                console.log(imageGenerator.image)
+            } else console.log("You don't have access to this feature yet")
+        } catch (e: any) {
+            setError('Error generating image: ' + e.message + ' - Please try again.')
+        }
     }
 
     const getLoadingMessage = () => {
-        if (isLoading) return 'Generating your image...'
+        if (imageGenerator.isLoading) return 'Generating your image...'
         else if (mash.isInitializing) return 'Setting up the app...'
         else if (mash.isRequesting) return 'Contributing with Mash...'
         else return ''
@@ -41,7 +44,7 @@ export default function Home() {
 
     return (
         <>
-            <ArtForm
+            <ArtGenerator
                 title="Album Art Generator"
                 subtitle="Enter your song lyrics and we'll make you an album artwork:"
                 generateArt={generateArt}
@@ -51,8 +54,10 @@ export default function Home() {
                 setLyrics={setLyrics}
                 stylePrompt={stylePrompt}
                 setStylePrompt={setStylePrompt}
-                image={image}
+                image={imageGenerator.image}
             />
+            {/* @ts-ignore */}
+            <mash-boost-button display-mode="icon-only" float-location="bottom-left" />
         </>
     )
 }

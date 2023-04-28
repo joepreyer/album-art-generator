@@ -27,6 +27,7 @@ export default function ArtGenerator({
     setStylePrompt,
     image,
 }: ArtGeneratorProps) {
+    console.log(error)
     return (
         <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Head>
@@ -56,34 +57,41 @@ export default function ArtGenerator({
                         placeholder="Enter a style (eg. abstract Picasso, high detail)"
                         sx={{ mb: '16px', width: '100%' }}
                     />
-                    <Button onClick={generateArt} sx={{ width: 'fit-content' }} variant="contained" type="submit">
-                        Create Album Art
-                    </Button>
-                    <Box sx={{ pt: '32px' }}>
-                        {!!error && (
-                            <Alert sx={{ mt: '16px' }} severity="error">
-                                {error}
-                            </Alert>
-                        )}
-                        {!!loadingMessage && (
-                            <Column>
-                                <CircularProgress />
-                                <Typography sx={{ mb: '16px', mt: '32px' }}>{loadingMessage}</Typography>
-                            </Column>
-                        )}
-                        {!!image && (
-                            <>
-                                <Typography sx={{ mb: '16px' }}> Click the image to download:</Typography>
-                                <a href={image} download>
-                                    <Box component="img" src={image} sx={{ width: '100%' }} />
-                                </a>
-                            </>
-                        )}
-                    </Box>
+                    {!!loadingMessage ? (
+                        <Column>
+                            <CircularProgress />
+                            <Typography sx={{ mb: '16px', mt: '32px' }}>{loadingMessage}</Typography>
+                        </Column>
+                    ) : (
+                        <>
+                            <Button
+                                onClick={generateArt}
+                                sx={{ width: 'fit-content' }}
+                                variant="contained"
+                                type="submit"
+                            >
+                                Create Album Art
+                            </Button>
+
+                            <Box sx={{ pt: '32px' }}>
+                                {!!error && (
+                                    <Alert sx={{ mt: '16px' }} severity="error">
+                                        {error}
+                                    </Alert>
+                                )}
+                                {!!image && (
+                                    <>
+                                        <Typography sx={{ mb: '16px' }}> Click the image to download:</Typography>
+                                        <a href={image} download>
+                                            <Box component="img" src={image} sx={{ width: '100%' }} />
+                                        </a>
+                                    </>
+                                )}
+                            </Box>
+                        </>
+                    )}
                 </Column>
             </Box>
-            {/* @ts-ignore */}
-            <mash-boost-button display-mode="icon-only" float-location="bottom-left" />
         </Container>
     )
 }
