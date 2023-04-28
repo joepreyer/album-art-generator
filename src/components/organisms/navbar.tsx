@@ -39,7 +39,7 @@ function Navbar({ isDarkMode, handleThemeChange }: NavbarProps) {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <Link href="/">
+                    <a href="/">
                         <FlexRow>
                             <MusicIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                             <Typography
@@ -58,7 +58,7 @@ function Navbar({ isDarkMode, handleThemeChange }: NavbarProps) {
                                 SongToVideo
                             </Typography>
                         </FlexRow>
-                    </Link>
+                    </a>
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
@@ -81,13 +81,16 @@ function Navbar({ isDarkMode, handleThemeChange }: NavbarProps) {
                             sx={{ display: { xs: 'block', md: 'none' } }}
                         >
                             {pages.map((page) => (
-                                <Link key={page.label} href={page.link}>
+                                <a key={page.label} href={page.link}>
                                     <MenuItem onClick={handleCloseNavMenu}>
                                         <Typography textAlign="center">{page.label}</Typography>
                                     </MenuItem>
-                                </Link>
+                                </a>
                             ))}
-                            <LightModeToggle isDarkMode={isDarkMode} handleThemeChange={handleThemeChange} />
+                            <LightModeToggle
+                                isDarkMode={isDarkMode}
+                                handleThemeChange={handleThemeChange}
+                            />
                         </Menu>
                     </Box>
                     <MusicIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -111,14 +114,19 @@ function Navbar({ isDarkMode, handleThemeChange }: NavbarProps) {
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
-                            <Link href={page.link} key={page.label}>
+                            <a href={page.link} key={page.label}>
                                 <Button
                                     onClick={handleCloseNavMenu}
-                                    sx={{ my: 2, color: 'inherit', display: 'block', fontWeight: 700 }}
+                                    sx={{
+                                        my: 2,
+                                        color: 'inherit',
+                                        display: 'block',
+                                        fontWeight: 700,
+                                    }}
                                 >
                                     {page.label}
                                 </Button>
-                            </Link>
+                            </a>
                         ))}
                     </Box>
                     <LightModeToggle

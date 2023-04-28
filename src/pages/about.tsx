@@ -6,23 +6,33 @@ export default function About() {
             <Box sx={{ maxWidth: '600px' }}>
                 <Typography
                     variant="h1"
-                    sx={{ mb: '16px', mt: '32px', textAlign: 'center', fontWeight: '700', color: '#1DB954' }}
+                    sx={{
+                        mb: '16px',
+                        mt: '32px',
+                        textAlign: 'center',
+                        fontWeight: '700',
+                        color: '#1DB954',
+                    }}
                 >
-                    About Us
+                    About
                 </Typography>
                 <Typography sx={{ mb: '16px' }}>
-                    We are an innovative team of developers and designers dedicated to creating tools that empower
-                    artists to express their creativity in new, exciting ways. Our mission is to provide accessible,
-                    cutting-edge technology that enables musicians and other creatives to reach their full potential.
+                    This is a tool to for musicians to generate album artwork from their song lyrics
+                    using AI, in a cost-effective manner.
+                </Typography>
+                <Typography sx={{ mb: '16px' }}>
+                    AI is empowering artists to express their creativity in new, exciting ways. Our
+                    mission is to provide accessible, cutting-edge technology that enables musicians
+                    and other creatives to reach their full potential.
                 </Typography>
 
                 <Typography sx={{ mb: '16px' }}>
-                    If you have any questions or feedback, please don&apos;t hesitate to reach out to us at
-                    contact@ourwebsite.com.
+                    If you have any questions or feedback, please don&apos;t hesitate to reach out
+                    to us at joepreyer@gmail.com
                 </Typography>
                 <Typography sx={{ mb: '16px' }}>Thank you for using our tool!</Typography>
                 {/* @ts-ignore */}
-                {/* <mash-boost-button display-mode="icon-only" float-location="bottom-left" /> */}
+                <mash-boost-button display-mode="icon-only" float-location="bottom-left" />
             </Box>
         </Container>
     )

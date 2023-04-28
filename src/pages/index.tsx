@@ -8,8 +8,6 @@ export default function Home() {
     const [lyrics, setLyrics] = useState('')
     const [stylePrompt, setStylePrompt] = useState('')
 
-    useEffect(() => {}, [])
-
     useEffect(() => {
         setError(null)
     }, [lyrics, stylePrompt])
@@ -24,7 +22,6 @@ export default function Home() {
         try {
             const hasAccess = devMode || (await mash.access(PRICE_CATEGORY_TAG))
             if (hasAccess) {
-                //TODO change back to hasAccess
                 await imageGenerator.generateImage(lyrics, stylePrompt)
             } else console.log("You don't have access to this feature yet")
         } catch (e: any) {

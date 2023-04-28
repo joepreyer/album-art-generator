@@ -12,7 +12,6 @@ export default function useMash(earnerID: string) {
     const [client, setClient] = useState<Mash>()
 
     useEffect(() => {
-        // Change this ID if you'd like to use your own Mash account
         const mash = new Mash({ earnerID: earnerID })
         setClient(mash)
         mash.init().then(() => {
