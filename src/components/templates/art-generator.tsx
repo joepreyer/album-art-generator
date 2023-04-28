@@ -95,7 +95,7 @@ export default function ArtGenerator({
                                     <>
                                         <Typography sx={{ mb: '16px' }}>
                                             {' '}
-                                            Click the image to download:
+                                            Your album art is ready! Click the image to download.
                                         </Typography>
                                         <a href={image} download>
                                             <Box
