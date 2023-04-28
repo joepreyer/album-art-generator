@@ -20,7 +20,8 @@ export default function Home() {
     const generateArt = async () => {
         if (!lyrics) return setError('Please enter some lyrics')
         try {
-            const hasAccess = devMode || (await mash.access(PRICE_CATEGORY_TAG))
+            // const hasAccess = devMode || (await mash.access(PRICE_CATEGORY_TAG))
+            const hasAccess = true || (await mash.access(PRICE_CATEGORY_TAG))
             if (hasAccess) {
                 await imageGenerator.generateImage(lyrics, stylePrompt)
             } else console.log("You don't have access to this feature yet")
