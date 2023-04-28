@@ -10,10 +10,9 @@ import Container from '@mui/material/Container'
 import Button from '@mui/material/Button'
 import MenuItem from '@mui/material/MenuItem'
 import MusicIcon from '@mui/icons-material/MusicVideo'
-
 import Link from 'next/link'
-import { Switch } from '@mui/material'
 import LightModeToggle from '../molecules/light-mode-toggle'
+import FlexRow from '../atoms/flex-row'
 
 const pages = [
     { label: 'Album Art Generator', link: '/' },
@@ -40,32 +39,26 @@ function Navbar({ isDarkMode, handleThemeChange }: NavbarProps) {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <Box
-                        component="a"
-                        href="/"
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                        }}
-                    >
-                        <MusicIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            sx={{
-                                mr: 2,
-                                display: { xs: 'none', md: 'flex' },
-                                fontFamily: 'monospace',
-                                fontWeight: 700,
-                                letterSpacing: '.3rem',
-                                color: 'inherit',
-                                textDecoration: 'none',
-                            }}
-                        >
-                            SongToVideo
-                        </Typography>
-                    </Box>
+                    <a href="/">
+                        <FlexRow>
+                            <MusicIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                            <Typography
+                                variant="h6"
+                                noWrap
+                                sx={{
+                                    mr: 2,
+                                    display: { xs: 'none', md: 'flex' },
+                                    fontFamily: 'monospace',
+                                    fontWeight: 700,
+                                    letterSpacing: '.3rem',
+                                    color: 'inherit',
+                                    textDecoration: 'none',
+                                }}
+                            >
+                                SongToVideo
+                            </Typography>
+                        </FlexRow>
+                    </a>
                     <Box
                         sx={{
                             flexGrow: 1,
@@ -141,8 +134,9 @@ function Navbar({ isDarkMode, handleThemeChange }: NavbarProps) {
                                     onClick={handleCloseNavMenu}
                                     sx={{
                                         my: 2,
-                                        color: 'white',
+                                        color: 'inherit',
                                         display: 'block',
+                                        fontWeight: 700,
                                     }}
                                 >
                                     {page.label}

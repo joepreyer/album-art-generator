@@ -5,7 +5,6 @@ import CssBaseline from '@mui/material/CssBaseline'
 import Navbar from '@/components/organisms/navbar'
 import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material/styles'
 import { useState } from 'react'
-import { Switch } from '@mui/material'
 
 const lightTheme = createTheme({
     palette: {
@@ -20,7 +19,7 @@ const darkTheme = createTheme({
 })
 
 export default function App({ Component, pageProps }: AppProps) {
-    const [isDarkMode, setIsDarkMode] = useState(false)
+    const [isDarkMode, setIsDarkMode] = useState(true)
 
     const theme = isDarkMode ? darkTheme : lightTheme
 

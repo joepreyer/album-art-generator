@@ -1,18 +1,16 @@
-//A column component made with Material UI that takes in an optional className and children to be rendered inside it
-//This component is used to make the layout of the page
 import React from 'react'
 import { Box, SxProps, Theme } from '@mui/material'
 
-type ColumnProps = {
+type RowProps = {
     styles?: SxProps<Theme> | undefined
     children: React.ReactNode
 }
 
-const Column = ({ styles, children }: ColumnProps) => (
+const Row = ({ styles, children }: RowProps) => (
     <Box
         sx={{
             display: 'flex',
-            flexDirection: 'column',
+            flexDirection: 'row',
             alignItems: 'center',
             ...styles,
         }}
@@ -21,4 +19,4 @@ const Column = ({ styles, children }: ColumnProps) => (
     </Box>
 )
 
-export default Column
+export default Row

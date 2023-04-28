@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Column from '@/components/atoms/column'
+import Column from '@/components/atoms/flex-column'
 import { Box, Button, Container, TextField, Typography, CircularProgress, Alert } from '@mui/material'
 
 type ArtGeneratorProps = {
@@ -32,7 +32,7 @@ export default function ArtGenerator({
             <Head>
                 <title>{title}</title>
             </Head>
-            <Typography variant="h1" sx={{ my: '32px', textAlign: 'center' }}>
+            <Typography variant="h1" sx={{ my: '32px', textAlign: 'center', color: '#1DB954', fontWeight: '700' }}>
                 {title}
             </Typography>
             <Box sx={{ maxWidth: '600px' }}>

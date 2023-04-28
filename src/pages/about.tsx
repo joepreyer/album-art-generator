@@ -4,7 +4,10 @@ export default function About() {
     return (
         <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Box sx={{ maxWidth: '600px' }}>
-                <Typography variant="h1" sx={{ mb: '16px', mt: '32px', textAlign: 'center' }}>
+                <Typography
+                    variant="h1"
+                    sx={{ mb: '16px', mt: '32px', textAlign: 'center', fontWeight: '700', color: '#1DB954' }}
+                >
                     About Us
                 </Typography>
                 <Typography sx={{ mb: '16px' }}>
