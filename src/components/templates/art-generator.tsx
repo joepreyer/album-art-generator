@@ -1,6 +1,14 @@
 import Head from 'next/head'
 import Column from '@/components/atoms/flex-column'
-import { Box, Button, Container, TextField, Typography, CircularProgress, Alert } from '@mui/material'
+import {
+    Box,
+    Button,
+    Container,
+    TextField,
+    Typography,
+    CircularProgress,
+    Alert,
+} from '@mui/material'
 
 type ArtGeneratorProps = {
     title: string
@@ -27,13 +35,15 @@ export default function ArtGenerator({
     setStylePrompt,
     image,
 }: ArtGeneratorProps) {
-    console.log(error)
     return (
         <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Head>
                 <title>{title}</title>
             </Head>
-            <Typography variant="h1" sx={{ my: '32px', textAlign: 'center', color: '#1DB954', fontWeight: '700' }}>
+            <Typography
+                variant="h1"
+                sx={{ my: '32px', textAlign: 'center', color: '#1DB954', fontWeight: '700' }}
+            >
                 {title}
             </Typography>
             <Box sx={{ maxWidth: '600px' }}>
@@ -60,7 +70,9 @@ export default function ArtGenerator({
                     {!!loadingMessage ? (
                         <Column>
                             <CircularProgress />
-                            <Typography sx={{ mb: '16px', mt: '32px' }}>{loadingMessage}</Typography>
+                            <Typography sx={{ mb: '16px', mt: '32px' }}>
+                                {loadingMessage}
+                            </Typography>
                         </Column>
                     ) : (
                         <>
@@ -81,9 +93,16 @@ export default function ArtGenerator({
                                 )}
                                 {!!image && (
                                     <>
-                                        <Typography sx={{ mb: '16px' }}> Click the image to download:</Typography>
+                                        <Typography sx={{ mb: '16px' }}>
+                                            {' '}
+                                            Click the image to download:
+                                        </Typography>
                                         <a href={image} download>
-                                            <Box component="img" src={image} sx={{ width: '100%' }} />
+                                            <Box
+                                                component="img"
+                                                src={image}
+                                                sx={{ width: '100%' }}
+                                            />
                                         </a>
                                     </>
                                 )}
