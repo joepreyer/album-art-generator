@@ -16,6 +16,7 @@ export default function useMash(earnerID: string) {
         const mash = new Mash({ earnerID: earnerID })
         setClient(mash)
         mash.init().then(() => setIsInitializing(false))
+        return () => console.log('***************unmounted mash************')
     }, [])
 
     // Wrap the Mash SDK's access function to track loading state

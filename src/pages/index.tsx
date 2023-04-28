@@ -8,10 +8,13 @@ export default function Home() {
     const [lyrics, setLyrics] = useState('')
     const [stylePrompt, setStylePrompt] = useState('')
 
+    useEffect(() => {}, [])
+
     //Clear error message when lyrics or style prompt changes
     useEffect(() => {
         setError(null)
     }, [lyrics, stylePrompt])
+
     const devMode = process.env.NODE_ENV === 'development'
     const PRICE_CATEGORY_TAG = process.env.NEXT_PUBLIC_MASH_PRICE_CATEGORY_TAG as string
     const mash = useMash(process.env.NEXT_PUBLIC_MASH_EARNER_ID as string)
@@ -50,8 +53,6 @@ export default function Home() {
                 setStylePrompt={setStylePrompt}
                 image={image}
             />
-            {/* @ts-ignore */}
-            <mash-boost-button display-mode="icon-only" float-location="bottom-left" />
         </>
     )
 }

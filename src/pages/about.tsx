@@ -17,9 +17,9 @@ export default function About() {
                     If you have any questions or feedback, please don't hesitate to reach out to us at
                     contact@ourwebsite.com.
                 </Typography>
-
                 <Typography sx={{ mb: '16px' }}>Thank you for using our tool!</Typography>
-                <mash-boost-button display-mode="icon-only" float-location="bottom-left" />
+                {/* @ts-ignore */}
+                {/* <mash-boost-button display-mode="icon-only" float-location="bottom-left" /> */}
             </Box>
         </Container>
     )

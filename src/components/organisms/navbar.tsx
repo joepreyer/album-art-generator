@@ -9,15 +9,23 @@ import MenuIcon from '@mui/icons-material/Menu'
 import Container from '@mui/material/Container'
 import Button from '@mui/material/Button'
 import MenuItem from '@mui/material/MenuItem'
-import AdbIcon from '@mui/icons-material/MusicVideo'
+import MusicIcon from '@mui/icons-material/MusicVideo'
+
 import Link from 'next/link'
+import { Switch } from '@mui/material'
+import LightModeToggle from '../molecules/light-mode-toggle'
 
 const pages = [
     { label: 'Album Art Generator', link: '/' },
     { label: 'About', link: '/about' },
 ]
 
-function Navbar() {
+type NavbarProps = {
+    isDarkMode: boolean
+    handleThemeChange: () => void
+}
+
+function Navbar({ isDarkMode, handleThemeChange }: NavbarProps) {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -41,7 +49,7 @@ function Navbar() {
                             alignItems: 'center',
                         }}
                     >
-                        <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                        <MusicIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                         <Typography
                             variant="h6"
                             noWrap
@@ -99,9 +107,10 @@ function Navbar() {
                                     </MenuItem>
                                 </Link>
                             ))}
+                            <LightModeToggle isDarkMode={isDarkMode} handleThemeChange={handleThemeChange} />
                         </Menu>
                     </Box>
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                    <MusicIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                     <Typography
                         variant="h5"
                         noWrap
@@ -141,6 +150,11 @@ function Navbar() {
                             </Link>
                         ))}
                     </Box>
+                    <LightModeToggle
+                        isDarkMode={isDarkMode}
+                        handleThemeChange={handleThemeChange}
+                        styles={{ display: { xs: 'none', md: 'flex' } }}
+                    />
                 </Toolbar>
             </Container>
         </AppBar>

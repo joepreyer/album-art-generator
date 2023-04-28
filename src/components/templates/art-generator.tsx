@@ -42,7 +42,7 @@ export default function ArtGenerator({
                         onChange={(e) => setLyrics(e.target.value)}
                         value={lyrics}
                         type="textarea"
-                        name="prompt"
+                        label="Lyrics"
                         placeholder="Enter your song lyrics here. If your song doesn't have lyrics, write a description about how the song makes you feel, or some imagery that you think suits the song."
                         sx={{ mb: '16px', width: '100%' }}
                         multiline
@@ -52,7 +52,7 @@ export default function ArtGenerator({
                         onChange={(e) => setStylePrompt(e.target.value)}
                         value={stylePrompt}
                         type="text"
-                        name="style"
+                        label="Style Prompt"
                         placeholder="Enter a style (eg. abstract Picasso, high detail)"
                         sx={{ mb: '16px', width: '100%' }}
                     />
@@ -82,6 +82,8 @@ export default function ArtGenerator({
                     </Box>
                 </Column>
             </Box>
+            {/* @ts-ignore */}
+            <mash-boost-button display-mode="icon-only" float-location="bottom-left" />
         </Container>
     )
 }
