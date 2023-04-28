@@ -12,7 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/MusicVideo';
 import Link from 'next/link';
 
-const pages = [{ label: 'Image', link: "/" }, { label: 'Video', link: "/video" }, { label: 'About', link: "/about" }];
+const pages = [{ label: 'Album Art Generator', link: "/" }, { label: 'About', link: "/about" }];
 
 function Navbar() {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -29,7 +29,7 @@ function Navbar() {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <Box component="a" href="/" sx={{ textDecoration: "none", color: 'inherit', display: "flex", flexDirection: "row", alignItems: "center" }}>
+                    <Box component="a" href="/" sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
                         <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                         <Typography
                             variant="h6"
@@ -50,7 +50,7 @@ function Navbar() {
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
-                            aria-label="account of current user"
+                            aria-label="menu button"
                             aria-controls="menu-appbar"
                             aria-haspopup="true"
                             onClick={handleOpenNavMenu}
