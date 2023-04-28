@@ -39,7 +39,7 @@ function Navbar({ isDarkMode, handleThemeChange }: NavbarProps) {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <a href="/">
+                    <Link href="/">
                         <FlexRow>
                             <MusicIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                             <Typography
@@ -58,7 +58,7 @@ function Navbar({ isDarkMode, handleThemeChange }: NavbarProps) {
                                 SongToVideo
                             </Typography>
                         </FlexRow>
-                    </a>
+                    </Link>
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
