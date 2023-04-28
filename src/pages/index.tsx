@@ -22,8 +22,10 @@ export default function Home() {
     const generateArt = async () => {
         if (!lyrics) return setError('Please enter some lyrics')
         try {
-            const hasAccess = devMode || (await mash.access(PRICE_CATEGORY_TAG))
-            if (true) {
+            // const hasAccess = devMode || (await mash.access(PRICE_CATEGORY_TAG))
+            const hasAccess = true
+            if (hasAccess) {
+                //TODO change back to hasAccess
                 await imageGenerator.generateImage(lyrics, stylePrompt)
                 console.log('GENERATED IMAGE')
                 console.log(imageGenerator.image)
