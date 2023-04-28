@@ -18,9 +18,7 @@ const pages = [
 ]
 
 function Navbar() {
-    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-        null
-    )
+    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget)
@@ -43,9 +41,7 @@ function Navbar() {
                             alignItems: 'center',
                         }}
                     >
-                        <AdbIcon
-                            sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
-                        />
+                        <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                         <Typography
                             variant="h6"
                             noWrap
@@ -97,22 +93,15 @@ function Navbar() {
                             }}
                         >
                             {pages.map((page) => (
-                                <Link href={page.link}>
-                                    <MenuItem
-                                        key={page.label}
-                                        onClick={handleCloseNavMenu}
-                                    >
-                                        <Typography textAlign="center">
-                                            {page.label}
-                                        </Typography>
+                                <Link key={page.label} href={page.link}>
+                                    <MenuItem onClick={handleCloseNavMenu}>
+                                        <Typography textAlign="center">{page.label}</Typography>
                                     </MenuItem>
                                 </Link>
                             ))}
                         </Menu>
                     </Box>
-                    <AdbIcon
-                        sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }}
-                    />
+                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                     <Typography
                         variant="h5"
                         noWrap
@@ -138,9 +127,8 @@ function Navbar() {
                         }}
                     >
                         {pages.map((page) => (
-                            <Link href={page.link}>
+                            <Link href={page.link} key={page.label}>
                                 <Button
-                                    key={page.label}
                                     onClick={handleCloseNavMenu}
                                     sx={{
                                         my: 2,
