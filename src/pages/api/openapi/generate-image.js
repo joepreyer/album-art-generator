@@ -15,8 +15,7 @@ export default async function handler(req, res) {
             model: 'text-davinci-003',
             prompt: promptText,
             temperature: 0.3,
-            max_tokens: 256,
-            top_p: 1,
+            max_tokens: 100,
             frequency_penalty: 0,
             presence_penalty: 1,
         })
@@ -33,7 +32,7 @@ export default async function handler(req, res) {
         const imageResponse = await openai.createImage({
             prompt: imagePromptText,
             n: 1,
-            size: '1024x1024',
+            size: '512x512',
         })
 
         return res.status(200).json({ imageURL: imageResponse.data.data[0].url })
