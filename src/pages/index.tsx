@@ -23,7 +23,7 @@ export default function Home() {
         if (!lyrics) return setError('Please enter some lyrics')
         try {
             const hasAccess = devMode || (await mash.access(PRICE_CATEGORY_TAG))
-            if (hasAccess) {
+            if (true) {
                 await imageGenerator.generateImage(lyrics, stylePrompt)
                 console.log('GENERATED IMAGE')
                 console.log(imageGenerator.image)

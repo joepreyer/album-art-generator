@@ -27,7 +27,8 @@ export default async function handler(req, res) {
             res.end(error)
             return
         }
-        let imagePromptText = textResponse.data.choices[0].text + ' The image should contain no text.'
+        let imagePromptText =
+            textResponse.data.choices[0].text + ' The image should contain no text.'
         if (!!stylePrompt) imagePromptText += ' With style: ' + stylePrompt
         const imageResponse = await openai.createImage({
             prompt: imagePromptText,
