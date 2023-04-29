@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import useImageGenerator from '@/hooks/use-image-generator'
 import useMash from '@/hooks/use-mash'
 import ArtGenerator from '@/components/templates/art-generator'
+import { styleOptions } from '../content'
 
 export default function Home() {
     const [error, setError] = useState<string | null>(null)
@@ -52,6 +53,7 @@ export default function Home() {
                 stylePrompt={stylePrompt}
                 setStylePrompt={setStylePrompt}
                 image={imageGenerator.image}
+                styleOptions={styleOptions}
             />
             {/* @ts-ignore */}
             <mash-boost-button display-mode="icon-only" float-location="bottom-left" />

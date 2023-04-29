@@ -8,9 +8,9 @@ export default async function handler(req, res) {
     try {
         const { lyrics, stylePrompt } = req.body
         const promptText =
-            '\n\n Generate one creative, succinct visually descriptive sentence, based on the following song lyrics: ' +
-            '\n\n' +
-            lyrics
+            '\n\n Write one simple visually descriptive sentence based on these lyrics that could be used to describe an image, to feed into the dall-e image generator: \n\n' +
+            lyrics +
+            '\n\n'
         const textResponse = await openai.createCompletion({
             model: 'text-davinci-003',
             prompt: promptText,
@@ -27,9 +27,9 @@ export default async function handler(req, res) {
             res.end(error)
             return
         }
-        let imagePromptText =
-            textResponse.data.choices[0].text + ' The image should contain no text.'
-        if (!!stylePrompt) imagePromptText += ' With style: ' + stylePrompt
+        let imagePromptText = textResponse.data.choices[0].text
+        if (!!stylePrompt) imagePromptText += ' ' + stylePrompt
+        console.log(imagePromptText)
         const imageResponse = await openai.createImage({
             prompt: imagePromptText,
             n: 1,

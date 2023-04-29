@@ -8,6 +8,10 @@ import {
     Typography,
     CircularProgress,
     Alert,
+    Select,
+    MenuItem,
+    FormControl,
+    InputLabel,
 } from '@mui/material'
 
 type ArtGeneratorProps = {
@@ -21,6 +25,7 @@ type ArtGeneratorProps = {
     stylePrompt: string
     setStylePrompt: (stylePrompt: string) => void
     image: string | null
+    styleOptions: string[]
 }
 
 export default function ArtGenerator({
@@ -34,6 +39,7 @@ export default function ArtGenerator({
     stylePrompt,
     setStylePrompt,
     image,
+    styleOptions,
 }: ArtGeneratorProps) {
     return (
         <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -59,14 +65,23 @@ export default function ArtGenerator({
                         multiline
                         rows={8}
                     />
-                    <TextField
-                        onChange={(e) => setStylePrompt(e.target.value)}
-                        value={stylePrompt}
-                        type="text"
-                        label="Style Prompt"
-                        placeholder="Enter a style (eg. abstract Picasso, high detail)"
-                        sx={{ mb: '16px', width: '100%' }}
-                    />
+                    <FormControl fullWidth>
+                        <InputLabel id="demo-simple-select-label">Style Prompt</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            sx={{ mb: '16px', width: '100%', color: 'white' }}
+                            value={stylePrompt}
+                            label="Style Prompt"
+                            onChange={(e) => setStylePrompt(e.target.value)}
+                            placeholder="Enter a style (eg. abstract Picasso, high detail)"
+                        >
+                            {styleOptions.map((option, index) => (
+                                <MenuItem key={index} value={option}>
+                                    {option}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
                     {!!loadingMessage ? (
                         <Column>
                             <CircularProgress />
@@ -84,7 +99,6 @@ export default function ArtGenerator({
                             >
                                 Create Album Art
                             </Button>
-
                             <Box sx={{ pt: '32px' }}>
                                 {!!error && (
                                     <Alert sx={{ mt: '16px' }} severity="error">
