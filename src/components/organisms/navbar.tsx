@@ -19,6 +19,8 @@ const pages = [
     { label: 'About', link: '/about' },
 ]
 
+const appName = 'Artify'
+
 type NavbarProps = {
     isDarkMode: boolean
     handleThemeChange: () => void
@@ -55,7 +57,7 @@ function Navbar({ isDarkMode, handleThemeChange }: NavbarProps) {
                                     textDecoration: 'none',
                                 }}
                             >
-                                SongToVideo
+                                {appName}
                             </Typography>
                         </FlexRow>
                     </a>
@@ -87,10 +89,7 @@ function Navbar({ isDarkMode, handleThemeChange }: NavbarProps) {
                                     </MenuItem>
                                 </a>
                             ))}
-                            <LightModeToggle
-                                isDarkMode={isDarkMode}
-                                handleThemeChange={handleThemeChange}
-                            />
+                            <LightModeToggle isDarkMode={isDarkMode} handleThemeChange={handleThemeChange} />
                         </Menu>
                     </Box>
                     <MusicIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -110,7 +109,7 @@ function Navbar({ isDarkMode, handleThemeChange }: NavbarProps) {
                             textDecoration: 'none',
                         }}
                     >
-                        SongToVideo
+                        {appName}
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (

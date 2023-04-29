@@ -108,10 +108,10 @@ export default function ArtGenerator({
                                 {!!image && (
                                     <>
                                         <Typography sx={{ mb: '16px' }}>
-                                            {' '}
-                                            Your album art is ready! Click the image to download.
+                                            Your album art is ready! Right-click the image and save
+                                            it to download.
                                         </Typography>
-                                        <a href={image} download>
+                                        <a href={image} download="album-art.jpg" target="_blank">
                                             <Box
                                                 component="img"
                                                 src={image}
