@@ -29,7 +29,6 @@ export default async function handler(req, res) {
         }
         let imagePromptText = textResponse.data.choices[0].text
         if (!!stylePrompt) imagePromptText += ' ' + stylePrompt
-        console.log(imagePromptText)
         const imageResponse = await openai.createImage({
             prompt: imagePromptText,
             n: 1,
