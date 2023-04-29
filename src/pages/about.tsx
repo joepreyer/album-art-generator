@@ -1,21 +1,11 @@
+import Heading from '@/components/atoms/heading'
 import { Box, Container, Typography } from '@mui/material'
 
 export default function About() {
     return (
         <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <Box sx={{ maxWidth: '600px' }}>
-                <Typography
-                    variant="h1"
-                    sx={{
-                        mb: '16px',
-                        mt: '32px',
-                        textAlign: 'center',
-                        fontWeight: '700',
-                        color: '#1DB954',
-                    }}
-                >
-                    About
-                </Typography>
+                <Heading>About</Heading>
                 <Typography sx={{ mb: '16px' }}>
                     Artify is a tool to for musicians to generate album artwork from their song lyrics using AI, in a
                     cost-effective manner.

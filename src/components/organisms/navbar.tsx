@@ -10,23 +10,18 @@ import Container from '@mui/material/Container'
 import Button from '@mui/material/Button'
 import MenuItem from '@mui/material/MenuItem'
 import MusicIcon from '@mui/icons-material/MusicVideo'
-import Link from 'next/link'
 import LightModeToggle from '../molecules/light-mode-toggle'
-import FlexRow from '../atoms/flex-row'
-
-const pages = [
-    { label: 'Album Art Generator', link: '/' },
-    { label: 'About', link: '/about' },
-]
+import CenteredRow from '../atoms/centered-row'
 
 const appName = 'Artify'
 
 type NavbarProps = {
     isDarkMode: boolean
     handleThemeChange: () => void
+    pages: { label: string; link: string }[]
 }
 
-function Navbar({ isDarkMode, handleThemeChange }: NavbarProps) {
+function Navbar({ isDarkMode, handleThemeChange, pages }: NavbarProps) {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -42,7 +37,7 @@ function Navbar({ isDarkMode, handleThemeChange }: NavbarProps) {
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <a href="/">
-                        <FlexRow>
+                        <CenteredRow>
                             <MusicIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                             <Typography
                                 variant="h6"
@@ -59,7 +54,7 @@ function Navbar({ isDarkMode, handleThemeChange }: NavbarProps) {
                             >
                                 {appName}
                             </Typography>
-                        </FlexRow>
+                        </CenteredRow>
                     </a>
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton

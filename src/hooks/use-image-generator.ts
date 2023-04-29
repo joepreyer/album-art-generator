@@ -6,6 +6,10 @@ export default function useVideoGenerator() {
     const [image, setImage] = useState(null)
 
     const generateImage = async (lyrics: string, stylePrompt?: string) => {
+        if (!lyrics) {
+            console.error('Lyrics must be provided')
+            throw new Error('Lyrics must be provided')
+        }
         setIsLoading(true)
         const response = await fetch('/api/openapi/generate-image', {
             method: 'POST',

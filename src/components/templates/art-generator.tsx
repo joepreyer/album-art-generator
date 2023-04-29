@@ -1,18 +1,8 @@
 import Head from 'next/head'
-import Column from '@/components/atoms/flex-column'
-import {
-    Box,
-    Button,
-    Container,
-    TextField,
-    Typography,
-    CircularProgress,
-    Alert,
-    Select,
-    MenuItem,
-    FormControl,
-    InputLabel,
-} from '@mui/material'
+import CenteredColumn from '@/components/atoms/centered-column'
+import { Box, Button, Container, TextField, Typography, CircularProgress, Alert } from '@mui/material'
+import Heading from '../atoms/heading'
+import SelectInput from '../molecules/select-input'
 
 type ArtGeneratorProps = {
     title: string
@@ -46,15 +36,10 @@ export default function ArtGenerator({
             <Head>
                 <title>{title}</title>
             </Head>
-            <Typography
-                variant="h1"
-                sx={{ my: '32px', textAlign: 'center', color: '#1DB954', fontWeight: '700' }}
-            >
-                {title}
-            </Typography>
+            <Heading>{title}</Heading>
             <Box sx={{ maxWidth: '600px' }}>
                 <Typography sx={{ mb: '16px' }}>{subtitle}</Typography>
-                <Column styles={{ width: '100%', maxWidth: '600px', mb: '32px' }}>
+                <CenteredColumn styles={{ maxWidth: '600px', mb: '32px', width: { xs: '100%', sm: '580px' } }}>
                     <TextField
                         onChange={(e) => setLyrics(e.target.value)}
                         value={lyrics}
@@ -65,30 +50,19 @@ export default function ArtGenerator({
                         multiline
                         rows={8}
                     />
-                    <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">Style Prompt</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            sx={{ mb: '16px', width: '100%', color: 'white' }}
-                            value={stylePrompt}
-                            label="Style Prompt"
-                            onChange={(e) => setStylePrompt(e.target.value)}
-                            placeholder="Enter a style (eg. abstract Picasso, high detail)"
-                        >
-                            {styleOptions.map((option, index) => (
-                                <MenuItem key={index} value={option}>
-                                    {option}
-                                </MenuItem>
-                            ))}
-                        </Select>
-                    </FormControl>
+                    <SelectInput
+                        selectStyles={{ mb: '16px', width: '100%', color: 'white' }}
+                        id="style-select"
+                        value={stylePrompt}
+                        onChange={(e) => setStylePrompt(e.target.value)}
+                        label="Style Prompt"
+                        options={styleOptions}
+                    />
                     {!!loadingMessage ? (
-                        <Column>
+                        <CenteredColumn>
                             <CircularProgress />
-                            <Typography sx={{ mb: '16px', mt: '32px' }}>
-                                {loadingMessage}
-                            </Typography>
-                        </Column>
+                            <Typography sx={{ mb: '16px', mt: '32px' }}>{loadingMessage}</Typography>
+                        </CenteredColumn>
                     ) : (
                         <>
                             <Button
@@ -108,22 +82,17 @@ export default function ArtGenerator({
                                 {!!image && (
                                     <>
                                         <Typography sx={{ mb: '16px' }}>
-                                            Your album art is ready! Right-click the image and save
-                                            it to download.
+                                            Your album art is ready! Right-click the image and save it to download.
                                         </Typography>
                                         <a href={image} download="album-art.jpg" target="_blank">
-                                            <Box
-                                                component="img"
-                                                src={image}
-                                                sx={{ width: '100%' }}
-                                            />
+                                            <Box component="img" src={image} sx={{ width: '100%' }} />
                                         </a>
                                     </>
                                 )}
                             </Box>
                         </>
                     )}
-                </Column>
+                </CenteredColumn>
             </Box>
         </Container>
     )

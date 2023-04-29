@@ -8,3 +8,8 @@ export const styleOptions = [
     'Pixel art',
     'Minimal',
 ]
+
+export const pages = [
+    { label: 'Album Art Generator', link: '/' },
+    { label: 'About', link: '/about' },
+]

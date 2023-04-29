@@ -1,12 +1,12 @@
 import React from 'react'
 import { Box, SxProps, Theme } from '@mui/material'
 
-type RowProps = {
+type CenteredRowProps = {
     styles?: SxProps<Theme> | undefined
     children: React.ReactNode
 }
 
-const Row = ({ styles, children }: RowProps) => (
+const CenteredRow = ({ styles, children }: CenteredRowProps) => (
     <Box
         sx={{
             display: 'flex',
@@ -19,4 +19,4 @@ const Row = ({ styles, children }: RowProps) => (
     </Box>
 )
 
-export default Row
+export default CenteredRow

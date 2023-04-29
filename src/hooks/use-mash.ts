@@ -22,14 +22,12 @@ export default function useMash(earnerID: string) {
     // Wrap the Mash SDK's access function to track loading state
     const access = async (pricingCategoryTag: string) => {
         setIsRequesting(true)
-
         let hasAccess = false
         try {
             hasAccess = (await client?.access(pricingCategoryTag)) ?? false
         } finally {
             setIsRequesting(false)
         }
-
         return hasAccess
     }
 

@@ -5,6 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import Navbar from '@/components/organisms/navbar'
 import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material/styles'
 import { useState } from 'react'
+import { pages } from '@/content'
 
 const lightTheme = responsiveFontSizes(
     createTheme({
@@ -38,7 +39,7 @@ export default function App({ Component, pageProps }: AppProps) {
             </Head>
             <ThemeProvider theme={theme}>
                 <CssBaseline />
-                <Navbar isDarkMode={isDarkMode} handleThemeChange={handleThemeChange} />
+                <Navbar pages={pages} isDarkMode={isDarkMode} handleThemeChange={handleThemeChange} />
                 <Component {...pageProps} />
             </ThemeProvider>
         </>

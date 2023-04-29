@@ -1,12 +1,12 @@
 import React from 'react'
 import { Box, SxProps, Theme } from '@mui/material'
 
-type ColumnProps = {
+type CenteredColumnProps = {
     styles?: SxProps<Theme> | undefined
     children: React.ReactNode
 }
 
-const FlexColumn = ({ styles, children }: ColumnProps) => (
+const CenteredColumn = ({ styles, children }: CenteredColumnProps) => (
     <Box
         sx={{
             display: 'flex',
@@ -19,4 +19,4 @@ const FlexColumn = ({ styles, children }: ColumnProps) => (
     </Box>
 )
 
-export default FlexColumn
+export default CenteredColumn
