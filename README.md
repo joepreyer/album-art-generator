@@ -26,7 +26,6 @@ NB: Make sure you have all the relevant env variables set correctly in a .env.lo
 
 Future improvements/work:
 
--   Replace anchor tags with Next Link components in the code (when using Next Links, the Mash object never finished initialising after page navigation, so I had to use anchor tags instead to force a full page reload on navigation)
 -   Improve error handling to give more descriptive error messages
 -   Add tests
 -   Add a user login system, and store all art generations for a user in a database which they can access later (look into if possible to link this with Mash)
