@@ -5,6 +5,15 @@ export default function useVideoGenerator() {
     const [isLoading, setIsLoading] = useState(false)
     const [image, setImage] = useState(null)
 
+    const handleError = (error: any) => {
+        console.error('There was an error when generating the image')
+        console.error(error)
+        const errorMessage =
+            error.message || 'Unknown error occurred while generating image - please try again.'
+        setIsLoading(false)
+        throw new Error(errorMessage)
+    }
+
     const generateImage = async (lyrics: string, stylePrompt?: string) => {
         try {
             if (!lyrics) {
@@ -24,20 +33,13 @@ export default function useVideoGenerator() {
             })
             if (!response.ok) {
                 const errorResponse = await response.json()
-                const errorMessage =
-                    errorResponse.error.message ||
-                    'Unknown error occurred while generating image - please try again.'
-                console.error('Error generating image', errorMessage)
-                setIsLoading(false)
-                throw new Error(errorMessage)
+                throw new Error(errorResponse)
             }
             let data = await response.json()
             setImage(data.imageURL)
             setIsLoading(false)
-        } catch (error) {
-            console.error('There was an error when generating the image')
-            console.error(error)
-            setIsLoading(false)
+        } catch (error: any) {
+            handleError(error)
         }
     }
 

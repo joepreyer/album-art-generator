@@ -37,8 +37,8 @@ export default async function handler(req, res) {
 
         return res.status(200).json({ imageURL: imageResponse.data.data[0].url })
     } catch (error) {
-        console.error('There was an error using the generate-image API: ', error)
+        console.error('There was an error using the generate-image API: ', error.message)
         const status = error.response.status || 500
-        return res.status(status).json({ error })
+        return res.status(status).json(error.message)
     }
 }
