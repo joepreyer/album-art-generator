@@ -1,5 +1,7 @@
 # Artify
 
+View live deployment [here](album-art-generator.vercel.app)
+
 Artify is an AI-powered album art generator. Feed it your song lyrics / vibe of your song and it will generate an album artwork for you, for just $1.
 
 In order to generate art, you must sign up to pay through [Mash](https://mash.com/). This can be done in the app.
