@@ -14,7 +14,8 @@ export default function Home() {
     }, [lyrics, stylePrompt])
 
     const devMode = process.env.NODE_ENV === 'development'
-    const PRICE_CATEGORY_TAG = process.env.NEXT_PUBLIC_MASH_PRICE_CATEGORY_TAG as string
+    const PRICE_CATEGORY_TAG = process.env
+        .NEXT_PUBLIC_MASH_PRICE_CATEGORY_TAG_ART_DISCOUNT as string
     const mash = useContext(MashContext)
     const imageGenerator = useImageGenerator()
 
