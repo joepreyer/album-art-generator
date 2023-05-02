@@ -12,6 +12,7 @@ import MenuItem from '@mui/material/MenuItem'
 import MusicIcon from '@mui/icons-material/MusicVideo'
 import LightModeToggle from '../molecules/light-mode-toggle'
 import CenteredRow from '../atoms/centered-row'
+import Link from 'next/link'
 
 const appName = 'Artify'
 
@@ -36,7 +37,7 @@ function Navbar({ isDarkMode, handleThemeChange, pages }: NavbarProps) {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <a href="/">
+                    <Link href="/">
                         <CenteredRow>
                             <MusicIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                             <Typography
@@ -55,7 +56,7 @@ function Navbar({ isDarkMode, handleThemeChange, pages }: NavbarProps) {
                                 {appName}
                             </Typography>
                         </CenteredRow>
-                    </a>
+                    </Link>
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
@@ -78,13 +79,16 @@ function Navbar({ isDarkMode, handleThemeChange, pages }: NavbarProps) {
                             sx={{ display: { xs: 'block', md: 'none' } }}
                         >
                             {pages.map((page) => (
-                                <a key={page.label} href={page.link}>
+                                <Link key={page.label} href={page.link}>
                                     <MenuItem onClick={handleCloseNavMenu}>
                                         <Typography textAlign="center">{page.label}</Typography>
                                     </MenuItem>
-                                </a>
+                                </Link>
                             ))}
-                            <LightModeToggle isDarkMode={isDarkMode} handleThemeChange={handleThemeChange} />
+                            <LightModeToggle
+                                isDarkMode={isDarkMode}
+                                handleThemeChange={handleThemeChange}
+                            />
                         </Menu>
                     </Box>
                     <MusicIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -108,7 +112,7 @@ function Navbar({ isDarkMode, handleThemeChange, pages }: NavbarProps) {
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
-                            <a href={page.link} key={page.label}>
+                            <Link href={page.link} key={page.label}>
                                 <Button
                                     onClick={handleCloseNavMenu}
                                     sx={{
@@ -120,7 +124,7 @@ function Navbar({ isDarkMode, handleThemeChange, pages }: NavbarProps) {
                                 >
                                     {page.label}
                                 </Button>
-                            </a>
+                            </Link>
                         ))}
                     </Box>
                     <LightModeToggle
