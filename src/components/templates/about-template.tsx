@@ -9,6 +9,7 @@ type AboutTemplateProps = {
     emailHidden: boolean
     emailButtonLoading: boolean
     openEmail: () => void
+    emailAddress: string
 }
 
 export default function AboutTemplate({
@@ -18,6 +19,7 @@ export default function AboutTemplate({
     emailHidden,
     emailButtonLoading,
     openEmail,
+    emailAddress,
 }: AboutTemplateProps) {
     return (
         <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -31,11 +33,11 @@ export default function AboutTemplate({
                 <LoadingButton
                     loading={emailButtonLoading}
                     onClick={emailHidden ? revealEmail : openEmail}
-                    sx={{ width: 'fit-content' }}
+                    sx={{ width: 'fit-content', textTransform: 'none' }}
                     variant="contained"
                     type="submit"
                 >
-                    {!emailHidden ? 'joepreyer@gmail.com' : 'Get Email'}
+                    {!emailHidden ? emailAddress : 'UNLOCK EMAIL'}
                 </LoadingButton>
             </Box>
         </Container>
