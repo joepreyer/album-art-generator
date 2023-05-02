@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import useImageGenerator from '@/hooks/use-image-generator'
 import useMash from '@/hooks/use-mash'
-import ArtGenerator from '@/components/templates/art-generator'
+import ArtGeneratorTemplate from '@/components/templates/art-generator-template'
 import { styleOptions } from '../content'
 
 export default function Home() {
@@ -41,7 +41,7 @@ export default function Home() {
 
     return (
         <>
-            <ArtGenerator
+            <ArtGeneratorTemplate
                 title="Album Art Generator"
                 subtitle="Enter your song lyrics and we'll make you an album artwork:"
                 generateArt={generateArt}
