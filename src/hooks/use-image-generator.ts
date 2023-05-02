@@ -1,4 +1,3 @@
-import { Code } from '@mui/icons-material'
 import { useState } from 'react'
 
 export default function useVideoGenerator() {
@@ -15,12 +14,13 @@ export default function useVideoGenerator() {
     }
 
     const generateImage = async (lyrics: string, stylePrompt?: string) => {
+        if (!lyrics) {
+            console.error('Lyrics must be provided')
+            throw new Error('Lyrics must be provided')
+        }
+        setImage(null)
+        setIsLoading(true)
         try {
-            if (!lyrics) {
-                console.error('Lyrics must be provided')
-                throw new Error('Lyrics must be provided')
-            }
-            setIsLoading(true)
             const response = await fetch('/api/openapi/generate-image', {
                 method: 'POST',
                 headers: {
