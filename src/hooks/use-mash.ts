@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
-
 import Mash from '@getmash/client-sdk'
 
-/**
- * A Mash SDK instance in hook form
- * @returns the Mash SDK client and state signalling if the SDK is in a loading state
- */
-export default function useMash(earnerID: string) {
+export type UseMashProps = {
+    access: (pricingCategoryTag: string) => Promise<boolean>
+    isInitializing: boolean
+    isRequesting: boolean
+}
+
+export function useMash(earnerID: string) {
     const [isInitializing, setIsInitializing] = useState(true)
     const [isRequesting, setIsRequesting] = useState(false)
     const [client, setClient] = useState<Mash>()

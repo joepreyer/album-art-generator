@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import useImageGenerator from '@/hooks/use-image-generator'
-import useMash from '@/hooks/use-mash'
 import ArtGeneratorTemplate from '@/components/templates/art-generator-template'
 import { styleOptions } from '../content'
+import { MashContext } from '@/context/mash-context'
 
 export default function Home() {
     const [error, setError] = useState<string | null>(null)
@@ -15,7 +15,7 @@ export default function Home() {
 
     const devMode = process.env.NODE_ENV === 'development'
     const PRICE_CATEGORY_TAG = process.env.NEXT_PUBLIC_MASH_PRICE_CATEGORY_TAG as string
-    const mash = useMash(process.env.NEXT_PUBLIC_MASH_EARNER_ID as string)
+    const mash = useContext(MashContext)
     const imageGenerator = useImageGenerator()
 
     const generateArt = async () => {
