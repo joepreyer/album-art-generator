@@ -1,5 +1,6 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
+import { Analytics } from '@vercel/analytics/react'
 import Head from 'next/head'
 import CssBaseline from '@mui/material/CssBaseline'
 import Navbar from '@/components/organisms/navbar'
@@ -49,6 +50,7 @@ export default function App({ Component, pageProps }: AppProps) {
                     handleThemeChange={handleThemeChange}
                 />
                 <Component {...pageProps} />
+                <Analytics />
             </ThemeProvider>
         </MashContext.Provider>
     )
