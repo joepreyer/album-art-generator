@@ -1,6 +1,6 @@
 import Heading from '@/components/atoms/heading'
 import { LoadingButton } from '@mui/lab'
-import { Box, Container, Typography } from '@mui/material'
+import { Alert, Box, Container, Typography } from '@mui/material'
 
 type AboutTemplateProps = {
     paragraphs: string[]
@@ -10,6 +10,7 @@ type AboutTemplateProps = {
     emailButtonLoading: boolean
     openEmail: () => void
     emailAddress: string
+    error: string | null
 }
 
 export default function AboutTemplate({
@@ -20,6 +21,7 @@ export default function AboutTemplate({
     emailButtonLoading,
     openEmail,
     emailAddress,
+    error,
 }: AboutTemplateProps) {
     return (
         <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -30,6 +32,11 @@ export default function AboutTemplate({
                         {paragraph}
                     </Typography>
                 ))}
+                {!!error && (
+                    <Alert sx={{ my: '16px' }} severity="error">
+                        {error}
+                    </Alert>
+                )}
                 <LoadingButton
                     loading={emailButtonLoading}
                     onClick={emailHidden ? revealEmail : openEmail}

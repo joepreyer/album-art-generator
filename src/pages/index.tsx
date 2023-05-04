@@ -28,7 +28,9 @@ export default function Home() {
                 await imageGenerator.generateImage(lyrics, stylePrompt)
             } else console.log("You don't have access to this feature yet")
         } catch (e: any) {
-            setError('Error generating image: ' + e.message + ' - Please try again.')
+            const errorMessage = 'Error generating image: ' + e.message + ' - Please try again.'
+            console.error(errorMessage)
+            setError(errorMessage)
         }
     }
 
