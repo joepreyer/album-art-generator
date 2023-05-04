@@ -5,7 +5,7 @@ import { useContext, useState } from 'react'
 import Layout from '@/components/molecules/layout'
 
 export default function About() {
-    const [error, setError] = useState<string | null>()
+    const [error, setError] = useState<string | null>(null)
     const [emailHidden, setEmailHidden] = useState(true)
     const mash = useContext(MashContext)
     const PRICE_CATEGORY_TAG = process.env.NEXT_PUBLIC_MASH_PRICE_CATEGORY_TAG_EMAIL as string
