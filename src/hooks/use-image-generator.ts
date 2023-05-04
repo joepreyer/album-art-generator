@@ -36,6 +36,9 @@ export default function useVideoGenerator() {
                 throw new Error(errorResponse)
             }
             let data = await response.json()
+            if (!data.imageURL) {
+                throw new Error('Invalid server response - missing imageURL property')
+            }
             setImage(data.imageURL)
             setIsLoading(false)
         } catch (error: any) {

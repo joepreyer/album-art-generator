@@ -1,6 +1,6 @@
 import Heading from '@/components/atoms/heading'
 import { LoadingButton } from '@mui/lab'
-import { Box, Button, Container, Typography } from '@mui/material'
+import { Box, Container, Typography } from '@mui/material'
 
 type AboutTemplateProps = {
     paragraphs: string[]
@@ -23,8 +23,8 @@ export default function AboutTemplate({
 }: AboutTemplateProps) {
     return (
         <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Heading>{heading}</Heading>
             <Box sx={{ maxWidth: '600px' }}>
-                <Heading>{heading}</Heading>
                 {paragraphs.map((paragraph, index) => (
                     <Typography key={index} sx={{ mb: '16px' }}>
                         {paragraph}

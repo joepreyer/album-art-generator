@@ -5,7 +5,7 @@ type LayoutProps = {
     children: React.ReactNode
 }
 
-const Layout = ({ title = 'artify', children }: LayoutProps) => {
+const Layout = ({ title = 'Artify', children }: LayoutProps) => {
     return (
         <>
             <Head>
