@@ -2,6 +2,7 @@ import AboutTemplate from '@/components/templates/about-template'
 import { aboutParagraphs } from '@/content'
 import { MashContext } from '@/context/mash-context'
 import { useContext, useState } from 'react'
+import Layout from '@/components/molecules/layout'
 
 export default function About() {
     const [emailHidden, setEmailHidden] = useState(true)
@@ -19,7 +20,7 @@ export default function About() {
     const openEmail = () => (window.location.href = `mailto:${emailAddress}?subject=Hello Artify!`)
 
     return (
-        <>
+        <Layout title="About Artify">
             <AboutTemplate
                 paragraphs={aboutParagraphs}
                 heading="About"
@@ -31,6 +32,6 @@ export default function About() {
             />
             {/* @ts-ignore */}
             <mash-boost-button display-mode="icon-only" float-location="bottom-left" />
-        </>
+        </Layout>
     )
 }

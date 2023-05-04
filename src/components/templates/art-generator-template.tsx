@@ -1,11 +1,19 @@
 import Head from 'next/head'
 import CenteredColumn from '@/components/atoms/centered-column'
-import { Box, Button, Container, TextField, Typography, CircularProgress, Alert } from '@mui/material'
+import {
+    Box,
+    Button,
+    Container,
+    TextField,
+    Typography,
+    CircularProgress,
+    Alert,
+} from '@mui/material'
 import Heading from '../atoms/heading'
 import SelectInput from '../molecules/select-input'
 
 type ArtGeneratorProps = {
-    title: string
+    heading: string
     subtitle: string
     generateArt: () => void
     loadingMessage: string
@@ -19,7 +27,7 @@ type ArtGeneratorProps = {
 }
 
 export default function ArtGenerator({
-    title,
+    heading,
     subtitle,
     generateArt,
     loadingMessage,
@@ -33,13 +41,12 @@ export default function ArtGenerator({
 }: ArtGeneratorProps) {
     return (
         <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Head>
-                <title>{title}</title>
-            </Head>
-            <Heading>{title}</Heading>
+            <Heading>{heading}</Heading>
             <Box sx={{ maxWidth: '600px' }}>
                 <Typography sx={{ mb: '16px' }}>{subtitle}</Typography>
-                <CenteredColumn styles={{ maxWidth: '600px', mb: '32px', width: { xs: '100%', sm: '580px' } }}>
+                <CenteredColumn
+                    styles={{ maxWidth: '600px', mb: '32px', width: { xs: '100%', sm: '580px' } }}
+                >
                     <TextField
                         onChange={(e) => setLyrics(e.target.value)}
                         value={lyrics}
@@ -61,7 +68,9 @@ export default function ArtGenerator({
                     {!!loadingMessage ? (
                         <CenteredColumn>
                             <CircularProgress />
-                            <Typography sx={{ mb: '16px', mt: '32px' }}>{loadingMessage}</Typography>
+                            <Typography sx={{ mb: '16px', mt: '32px' }}>
+                                {loadingMessage}
+                            </Typography>
                         </CenteredColumn>
                     ) : (
                         <>
@@ -82,10 +91,15 @@ export default function ArtGenerator({
                                 {!!image && (
                                     <>
                                         <Typography sx={{ mb: '16px' }}>
-                                            Your album art is ready! Right-click the image and save it to download.
+                                            Your album art is ready! Right-click the image and save
+                                            it to download.
                                         </Typography>
                                         <a href={image} download="album-art.jpg" target="_blank">
-                                            <Box component="img" src={image} sx={{ width: '100%' }} />
+                                            <Box
+                                                component="img"
+                                                src={image}
+                                                sx={{ width: '100%' }}
+                                            />
                                         </a>
                                     </>
                                 )}

@@ -3,6 +3,7 @@ import useImageGenerator from '@/hooks/use-image-generator'
 import ArtGeneratorTemplate from '@/components/templates/art-generator-template'
 import { styleOptions } from '../content'
 import { MashContext } from '@/context/mash-context'
+import Layout from '@/components/molecules/layout'
 
 export default function Home() {
     const [error, setError] = useState<string | null>(null)
@@ -41,9 +42,9 @@ export default function Home() {
     const loadingMessage = getLoadingMessage()
 
     return (
-        <>
+        <Layout title="Album Art Generator">
             <ArtGeneratorTemplate
-                title="Album Art Generator"
+                heading="Album Art Generator"
                 subtitle="Enter your song lyrics and we'll make you an album artwork:"
                 generateArt={generateArt}
                 loadingMessage={loadingMessage}
@@ -57,6 +58,6 @@ export default function Home() {
             />
             {/* @ts-ignore */}
             <mash-boost-button display-mode="icon-only" float-location="bottom-left" />
-        </>
+        </Layout>
     )
 }
