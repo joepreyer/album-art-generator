@@ -7,7 +7,6 @@ import Navbar from '@/components/organisms/navbar'
 import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material/styles'
 import { useState } from 'react'
 import { pages } from '@/content'
-import { MashContext } from '@/context/mash-context'
 import { useMash } from '@/hooks/use-mash'
 
 const lightTheme = responsiveFontSizes(
@@ -38,7 +37,7 @@ export default function App({ Component, pageProps }: AppProps) {
     const mash = useMash(process.env.NEXT_PUBLIC_MASH_EARNER_ID as string)
 
     return (
-        <MashContext.Provider value={mash}>
+        <>
             <Head>
                 <meta name="viewport" content="initial-scale=1, width=device-width" />
             </Head>
@@ -49,9 +48,9 @@ export default function App({ Component, pageProps }: AppProps) {
                     isDarkMode={isDarkMode}
                     handleThemeChange={handleThemeChange}
                 />
-                <Component {...pageProps} />
+                <Component {...pageProps} mash={mash} />
                 <Analytics />
             </ThemeProvider>
-        </MashContext.Provider>
+        </>
     )
 }

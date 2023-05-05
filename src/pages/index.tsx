@@ -1,11 +1,15 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect } from 'react'
 import useImageGenerator from '@/hooks/use-image-generator'
 import ArtGeneratorTemplate from '@/components/templates/art-generator-template'
 import { styleOptions } from '../content'
-import { MashContext } from '@/context/mash-context'
+import { UseMashProps } from '@/hooks/use-mash'
 import Layout from '@/components/molecules/layout'
 
-export default function Home() {
+type HomeProps = {
+    mash: UseMashProps
+}
+
+export default function Home({ mash }: HomeProps) {
     const [error, setError] = useState<string | null>(null)
     const [lyrics, setLyrics] = useState('')
     const [stylePrompt, setStylePrompt] = useState('')
@@ -17,7 +21,6 @@ export default function Home() {
     const devMode = process.env.NODE_ENV === 'development'
     const PRICE_CATEGORY_TAG = process.env
         .NEXT_PUBLIC_MASH_PRICE_CATEGORY_TAG_ART_DISCOUNT as string
-    const mash = useContext(MashContext)
     const imageGenerator = useImageGenerator()
 
     const generateArt = async () => {
@@ -47,7 +50,7 @@ export default function Home() {
         <Layout title="Album Art Generator">
             <ArtGeneratorTemplate
                 heading="Album Art Generator"
-                subtitle="Enter your song lyrics and we'll make you an album artwork:"
+                subtitle="Enter your song lyrics and we'll make you an album artwork for $0.1:"
                 generateArt={generateArt}
                 loadingMessage={loadingMessage}
                 error={error}

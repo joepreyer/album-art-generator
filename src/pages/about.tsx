@@ -1,13 +1,16 @@
 import AboutTemplate from '@/components/templates/about-template'
 import { aboutParagraphs } from '@/content'
-import { MashContext } from '@/context/mash-context'
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import Layout from '@/components/molecules/layout'
+import { UseMashProps } from '@/hooks/use-mash'
 
-export default function About() {
+type AboutPageProps = {
+    mash: UseMashProps
+}
+
+export default function About({ mash }: AboutPageProps) {
     const [error, setError] = useState<string | null>(null)
     const [emailHidden, setEmailHidden] = useState(true)
-    const mash = useContext(MashContext)
     const PRICE_CATEGORY_TAG = process.env.NEXT_PUBLIC_MASH_PRICE_CATEGORY_TAG_EMAIL as string
     const emailAddress = process.env.NEXT_PUBLIC_EMAIL_ADDRESS as string
 
