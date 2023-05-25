@@ -37,15 +37,16 @@ export default function AboutTemplate({
                         {error}
                     </Alert>
                 )}
-                <LoadingButton
+                <Typography sx={{color:"#1DB954"}} component="a" href="mailto:${emailAddress}?subject=Hey My Spotify Canvas!">{emailAddress}</Typography>
+                {/* <LoadingButton
                     loading={emailButtonLoading}
                     onClick={emailHidden ? revealEmail : openEmail}
                     sx={{ width: 'fit-content', textTransform: 'none' }}
                     variant="contained"
                     type="submit"
-                >
-                    {!emailHidden ? emailAddress : 'UNLOCK EMAIL'}
-                </LoadingButton>
+                > */}
+                    {/* {!emailHidden ? emailAddress : 'UNLOCK EMAIL'} */}
+                {/* </LoadingButton> */}
             </Box>
         </Container>
     )
